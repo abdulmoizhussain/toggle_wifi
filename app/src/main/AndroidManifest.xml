@@ -31,18 +31,18 @@
 <!--                android:name="android.app.device_admin"-->
 <!--                android:resource="@xml/device_admin_uses_policies" />-->
 <!--        </receiver>-->
-<!--        <receiver-->
-<!--            android:name=".DemoAdminReceiver"-->
-<!--            android:label="Admin service"-->
-<!--            android:permission="android.permission.BIND_DEVICE_ADMIN">-->
-<!--            <meta-data-->
-<!--                android:name="android.app.device_admin"-->
-<!--                android:resource="@xml/device_admin_uses_policies" />-->
+        <receiver
+            android:name=".DemoAdminReceiver"
+            android:label="Admin service"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_uses_policies" />
 
-<!--            <intent-filter>-->
-<!--                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".MainActivity">
             <intent-filter>

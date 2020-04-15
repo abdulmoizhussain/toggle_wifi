@@ -1,7 +1,5 @@
 package com.example.togglewifi
 
-import android.annotation.SuppressLint
-import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.admin.DevicePolicyManager
@@ -21,14 +19,14 @@ class MainActivity : AppCompatActivity() {
 
 //        notification()
 
+
         try3()
     }
 
     private fun try0() {
         val mDevicePolicyManager = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         val answer = mDevicePolicyManager.isAdminActive(ComponentName(this, MainActivity::class.java))
-
-        Common.printLn(answer.toString())
+//        mDevicePolicyManager.lockNow()
 
 //        intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
 //        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, ComponentName(this, DemoAdminReceiver::class.java))
@@ -46,21 +44,22 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("InlinedApi")
+//    @SuppressLint("InlinedApi")
     private fun try3() {
         val yepIntent = Intent(this, MyIntentService::class.java)
         val yepPendingIntent = PendingIntent.getService(this, 123, yepIntent, PendingIntent.FLAG_CANCEL_CURRENT)
 
-        val mBuilder = NotificationCompat.Builder(this, "channelId")
+        val mBuilder = NotificationCompat.Builder(applicationContext, "channelId")
             .setSmallIcon(R.drawable.ic_launcher_background)
 //            .setContentTitle("Tap to toggle wifi state")
             .setWhen(System.currentTimeMillis())
 //            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setPriority(Notification.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setShowWhen(false)
             .setOngoing(true)
+            .setTimeoutAfter(Long.MAX_VALUE)
             .setAutoCancel(false)
-            .setNumber(100)
+//            .setNumber(100)
 //            .addAction(R.drawable.ic_launcher_background, "My Action", yepPendingIntent)
 
         // Bingo
@@ -78,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         mNotificationManager.notify(1, mBuilder.build())
     }
 
-    @SuppressLint("InlinedApi")
+//    @SuppressLint("InlinedApi")
     private fun notification() {
         val intent = Intent(this, BackReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -89,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             .setContentTitle("Tap to toggle wifi state")
             .setWhen(System.currentTimeMillis())
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setPriority(Notification.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setShowWhen(false)
             .setOngoing(true)
             .setAutoCancel(false)
