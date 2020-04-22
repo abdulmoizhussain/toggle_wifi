@@ -5,6 +5,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -13,24 +16,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-
-        <service
-            android:name=".MyIntentService"
-            android:exported="false" />
-
-<!--        <receiver-->
-<!--            android:name=".BackReceiver"-->
-<!--            android:enabled="true"-->
-<!--            android:exported="true"-->
-<!--            android:permission="android.permission.BIND_DEVICE_ADMIN">-->
+        <receiver
+            android:name=".RemoteViewReceiver"
+            android:enabled="true"
+            android:exported="true">
 <!--            <intent-filter>-->
-<!--                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />-->
+<!--                <data android:scheme="http" />-->
 <!--            </intent-filter>-->
+        </receiver>
 
-<!--            <meta-data-->
-<!--                android:name="android.app.device_admin"-->
-<!--                android:resource="@xml/device_admin_uses_policies" />-->
-<!--        </receiver>-->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true" -->
+        <!-- android:permission="android.permission.BIND_DEVICE_ADMIN"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.app.device_admin" -->
+        <!-- android:resource="@xml/device_admin_uses_policies" /> -->
+        <!-- </receiver> -->
         <receiver
             android:name=".DemoAdminReceiver"
             android:label="Admin service"
@@ -44,7 +48,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

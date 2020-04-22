@@ -3,12 +3,43 @@
 <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 
 <!-- We have to set the height to 64dp, this is the rule of the small notification -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/notif_small"
     android:layout_width="match_parent"
-    android:layout_height="20dp"
+    android:layout_height="40dp"
     android:orientation="horizontal">
-<!--    android:background="@drawable/"-->
+    <!--    android:background="@drawable/"-->
+
+    <TextView
+        android:id="@+id/toggle_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:text="toggle wifi"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/toggle_torch"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:text="toggle torch"
+        android:textSize="20sp" />
+    <!--        android:layout_toEndOf="@id/toggle_wifi"-->
+    <!--        android:layout_toRightOf="@id/toggle_wifi"-->
+
+    <TextView
+        android:id="@+id/change_phone_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:text="change orientation"
+        android:textSize="20sp" />
+    <!--        android:layout_toEndOf="@id/toggle_torch"-->
+    <!--        android:layout_toRightOf="@id/toggle_torch"-->
 
     <!--    <ImageView-->
     <!--        android:id="@+id/notif_icon"-->
@@ -37,11 +68,4 @@
     <!--        android:textSize="17sp"-->
     <!--        android:textStyle="bold" />-->
 
-    <TextView
-        android:id="@+id/notif_wifi"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="tap to toggle wifi"
-        android:textSize="20sp" />
-
-</RelativeLayout>
+</LinearLayout>
